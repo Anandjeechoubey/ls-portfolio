@@ -3,6 +3,8 @@ import type { NextComponentType } from "next";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { isBrowser } from "react-device-detect";
+import Image from "next/image";
 
 interface Props {
   /**
@@ -30,32 +32,32 @@ function ElevationScroll(props: Props) {
     elevation: trigger ? 4 : 0,
   });
 }
-
+console.log(isBrowser);
 const Header: NextComponentType = (props: any) => {
   const activeTab = props.activeTab;
   const setActiveTab = props.setActiveTab;
 
-  const [width, setWidth] = useState<number>(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
+  // const [width, setWidth] = useState<number>(
+  //   typeof window !== "undefined" ? window.innerWidth : 0
+  // );
 
-  function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
-  }
-  useEffect(() => {
-    window.addEventListener("resize", handleWindowSizeChange);
-    return () => {
-      window.removeEventListener("resize", handleWindowSizeChange);
-    };
-  }, []);
-  useEffect(() => {
-    setWidth(window.innerWidth);
-  }, []);
+  // function handleWindowSizeChange() {
+  //   setWidth(window.innerWidth);
+  // }
+  // useEffect(() => {
+  //   window.addEventListener("resize", handleWindowSizeChange);
+  //   return () => {
+  //     window.removeEventListener("resize", handleWindowSizeChange);
+  //   };
+  // }, []);
+  // useEffect(() => {
+  //   setWidth(window.innerWidth);
+  // }, []);
 
   return (
     <ElevationScroll {...props}>
       {/* <Box className="flex justify-center w-full"> */}
-      {typeof window === "undefined" || width > 900 ? (
+      {isBrowser ? (
         <React.Fragment>
           <AppBar
             sx={{
@@ -63,15 +65,18 @@ const Header: NextComponentType = (props: any) => {
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              background: "white",
+              background: "#F6F2F2",
               color: "black",
               paddingY: "28px",
               paddingX: "96px",
             }}
           >
-            <Typography variant="h6" component="div">
-              Lakshya Singh
-            </Typography>
+            <Image
+              src={"/images/Lakshya.png"}
+              width={121}
+              height={26}
+              alt="Lakshya"
+            />
             <Box
               sx={{
                 backgroundColor: "rgba(0,0,0,0.05)",

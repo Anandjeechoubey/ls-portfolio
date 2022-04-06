@@ -19,6 +19,7 @@
     "@mui/styles": "^5.5.1",
     "next": "latest",
     "react": "latest",
+    "react-device-detect": "^2.1.2",
     "react-dom": "latest"
   },
   "devDependencies": {

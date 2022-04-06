@@ -4,22 +4,29 @@ import { Grid, Typography, Box, Button } from "@mui/material";
 import Card from "./Card";
 import Image from "next/image";
 
-const CustomButton: NextComponentType = ({ children }) => (
+const CustomButton: NextComponentType = (props) => (
   <Box
     sx={{
-      border: "2px solid rgba(0,0,0,0.4)",
+      border: `2px solid ${
+        props.disabled ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.6)"
+      }`,
+      color: props.disabled ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.6)",
       borderRadius: 8,
       paddingY: 1,
       paddingX: 2,
+      cursor: "pointer",
     }}
+    {...props}
   >
-    {children}
+    {props.children}
   </Box>
 );
 
 const About: NextComponentType = () => {
+  const [activeFirm, setActiveFirm] = React.useState(1);
+  const firms = ["dineout", "adobe"];
   return (
-    <Grid container sx={{ marginTop: 24 }} spacing={4}>
+    <Grid container sx={{ marginBottom: 4 }} spacing={4}>
       <Grid item xs={12} md={6}>
         <Card>
           <Image
@@ -62,10 +69,8 @@ const About: NextComponentType = () => {
       <Grid item xs={12} md={6}>
         <Grid container spacing={4}>
           <Grid item xs={6}>
-            <Card>
-              <Typography variant="h5" component="h1" gutterBottom>
-                `Cras mattis consectetur purus sit amet fermentum.
-              </Typography>
+            <Card bg="/images/map.png" sx={{ height: 240 }}>
+              <Typography variant="h5" component="h1" gutterBottom></Typography>
             </Card>
           </Grid>
           <Grid item xs={6}>
@@ -96,17 +101,53 @@ const About: NextComponentType = () => {
         <Grid container spacing={4}>
           <Grid item xs={6}>
             <Card>
-              <Typography variant="h4" component="h1" gutterBottom>
+              <Typography variant="h5" component="h1" gutterBottom>
                 Firms I worked with
               </Typography>
+              <Box
+                sx={{ display: "flex", justifyContent: "center", marginY: 2 }}
+              >
+                <Image
+                  src={`/images/${firms[activeFirm]}.png`}
+                  width={150}
+                  height={40}
+                  alt={firms[activeFirm]}
+                />
+              </Box>
+              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                <CustomButton
+                  onClick={() => setActiveFirm((n) => (n > 0 ? n - 1 : 0))}
+                  disabled={activeFirm === 0}
+                >{`<`}</CustomButton>
+                <CustomButton
+                  onClick={() =>
+                    setActiveFirm((n) =>
+                      n < firms.length - 1 ? n + 1 : firms.length - 1
+                    )
+                  }
+                  disabled={activeFirm === firms.length - 1}
+                >{`>`}</CustomButton>
+              </Box>
             </Card>
           </Grid>
           <Grid item xs={6}>
-            <Card>
-              <Typography variant="h4" component="h1" gutterBottom>
-                Cras mattis consectetur purus sit amet fermentum
-              </Typography>
-            </Card>
+            <a href={"https://www.linkedin.com/in/lakshya-singh-3ab34a174/"}>
+              <Card
+                sx={{
+                  height: 240,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Image
+                  src="/images/linkedin.png"
+                  width={72}
+                  height={72}
+                  alt="LinkedIn"
+                />
+              </Card>
+            </a>
           </Grid>
         </Grid>
       </Grid>
