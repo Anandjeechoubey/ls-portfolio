@@ -53,36 +53,9 @@ const Projects: NextComponentType = () => {
         </Box>
       </Grid>
       <Grid item xs={12} md={6}>
-        <Box sx={{ display: "flex", gap: 4 }}>
-          <Card bg="/images/proj6.png">
-            <Typography
-              variant="h6"
-              component="h1"
-              sx={{ opacity: 0 }}
-              gutterBottom
-            >
-              `Cras mattis consectetur purus sit amet fermentum. Cras justo
-              odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus,
-              porta ac consectetur ac, vestibulum at eros. Praesent commodo
-              cursus magna, vel scelerisque nisl consectetur et.`
-            </Typography>
-          </Card>
-          <Box>
-            <Card
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Image
-                src="/images/behance.png"
-                width={72}
-                height={45}
-                alt="Behance"
-              />
-            </Card>
-            <Card bg="/images/proj3.png">
+        <Grid container spacing={4}>
+          <Grid item xs={6}>
+            <Card bg="/images/proj6.png">
               <Typography
                 variant="h6"
                 component="h1"
@@ -90,11 +63,46 @@ const Projects: NextComponentType = () => {
                 gutterBottom
               >
                 `Cras mattis consectetur purus sit amet fermentum. Cras justo
-                odio, dapibus ac facilisis in, egestas eget quam.
+                odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+                risus, porta ac consectetur ac, vestibulum at eros. Praesent
+                commodo cursus magna, vel scelerisque nisl consectetur et.`
               </Typography>
             </Card>
-          </Box>
-        </Box>
+          </Grid>
+          <Grid item xs={6}>
+            <Box>
+              <a href="https://www.behance.net/Lakshya_Singh">
+                <Card
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    height: 240,
+                  }}
+                >
+                  <Image
+                    src="/images/behance.png"
+                    width={72}
+                    height={45}
+                    alt="Behance"
+                  />
+                </Card>
+              </a>
+              <Card bg="/images/proj3.png">
+                <Typography
+                  variant="h6"
+                  component="h1"
+                  sx={{ opacity: 0 }}
+                  gutterBottom
+                >
+                  `Cras mattis consectetur purus sit amet fermentum. Cras justo
+                  odio, dapibus ac facilisis in, egestas eget quam.
+                </Typography>
+              </Card>
+            </Box>
+          </Grid>
+        </Grid>
         <Box>
           <Card bg="/images/proj5.png">
             <Typography

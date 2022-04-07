@@ -13,7 +13,7 @@ import Projects from "../src/components/Projects";
 import Extra from "../src/components/Extra_";
 
 const Home: NextPage = () => {
-  const [activeTab, setActiveTab] = React.useState("all");
+  const [activeTab, setActiveTab] = React.useState(0);
   return (
     <Box sx={{ background: "#F6F2F2" }}>
       <Container
@@ -24,6 +24,7 @@ const Home: NextPage = () => {
           background: "#F6F2F2",
           width: "100vw",
           marginX: "auto",
+          minHeight: "100vh",
         }}
       >
         <Box
@@ -38,9 +39,9 @@ const Home: NextPage = () => {
         >
           <Header activeTab={activeTab} setActiveTab={setActiveTab} />
         </Box>
-        {activeTab === "all" || activeTab === "about" ? <About /> : null}
-        {activeTab === "all" || activeTab === "projects" ? <Projects /> : null}
-        {activeTab === "all" || activeTab === "extra" ? <Extra /> : null}
+        {activeTab === 0 || activeTab === 1 ? <About /> : null}
+        {activeTab === 0 || activeTab === 2 ? <Projects /> : null}
+        {activeTab === 0 || activeTab === 3 ? <Extra /> : null}
       </Container>
     </Box>
   );

@@ -1,21 +1,31 @@
-import React from "react";
+import React, { ReactChild } from "react";
 import type { NextComponentType } from "next";
 import { Grid, Typography, Box, Button } from "@mui/material";
 import Card from "./Card";
 import Image from "next/image";
 
-const CustomButton: NextComponentType = (props) => (
+const CustomButton = (props: {
+  disabled?: boolean;
+  action?: () => void;
+  children?: ReactChild;
+}) => (
   <Box
     sx={{
-      border: `2px solid ${
-        props.disabled ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.6)"
+      border: `1px solid ${
+        props.disabled ? "rgba(0, 0, 0, 0.0)" : "rgba(0, 0, 0, 0.0)"
       }`,
+      "&:hover": {
+        border: `1px solid ${
+          props.disabled ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.6)"
+        }`,
+      },
       color: props.disabled ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.6)",
-      borderRadius: 8,
+      borderRadius: 2,
       paddingY: 1,
       paddingX: 2,
       cursor: "pointer",
     }}
+    onClick={props.action}
     {...props}
   >
     {props.children}
@@ -116,11 +126,11 @@ const About: NextComponentType = () => {
               </Box>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <CustomButton
-                  onClick={() => setActiveFirm((n) => (n > 0 ? n - 1 : 0))}
+                  action={() => setActiveFirm((n) => (n > 0 ? n - 1 : 0))}
                   disabled={activeFirm === 0}
                 >{`<`}</CustomButton>
                 <CustomButton
-                  onClick={() =>
+                  action={() =>
                     setActiveFirm((n) =>
                       n < firms.length - 1 ? n + 1 : firms.length - 1
                     )

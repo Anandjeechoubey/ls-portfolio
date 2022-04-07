@@ -12,12 +12,11 @@ interface Props {
    * You won't need it on your project.
    */
   window?: () => Window;
-  children: React.ReactElement;
-  activeTab?: string;
-  setActiveTab: (tab: string) => void;
+  activeTab?: number;
+  setActiveTab: (tab: number) => void;
 }
 
-function ElevationScroll(props: Props) {
+function ElevationScroll(props: any) {
   const { children, window } = props;
   // Note that you normally won't need to set the window ref as useScrollTrigger
   // will default to window.
@@ -32,11 +31,7 @@ function ElevationScroll(props: Props) {
     elevation: trigger ? 4 : 0,
   });
 }
-console.log(isBrowser);
-const Header: NextComponentType = (props: any) => {
-  const activeTab = props.activeTab;
-  const setActiveTab = props.setActiveTab;
-
+const Header = (props: Props) => {
   // const [width, setWidth] = useState<number>(
   //   typeof window !== "undefined" ? window.innerWidth : 0
   // );
@@ -55,7 +50,7 @@ const Header: NextComponentType = (props: any) => {
   // }, []);
 
   return (
-    <ElevationScroll {...props}>
+    <React.Fragment>
       {/* <Box className="flex justify-center w-full"> */}
       {isBrowser ? (
         <React.Fragment>
@@ -83,22 +78,25 @@ const Header: NextComponentType = (props: any) => {
                 paddingX: "6px",
                 paddingY: "6px",
                 gap: "16px",
-                borderRadius: "4444px",
+                borderRadius: "12px",
               }}
               className="flex bg-gray-400"
             >
               <Typography
                 sx={{
                   background: `${
-                    activeTab === "all" ? "white" : "rgba(0,0,0,0)"
+                    props.activeTab === 0 ? "white" : "rgba(0,0,0,0)"
                   }`,
                   paddingX: "12px",
-                  borderRadius: "4444px",
+                  borderRadius: "12px",
+                  cursor: "pointer",
+                  // fontSize: "16px",
+                  // marginBottom: "0px",
                   "&:hover": {
                     color: "rgba(0,0,0,0.5)",
                   },
                 }}
-                onClick={() => setActiveTab("all")}
+                onClick={() => props.setActiveTab(0)}
                 variant="h6"
                 component="div"
               >
@@ -107,15 +105,16 @@ const Header: NextComponentType = (props: any) => {
               <Typography
                 sx={{
                   background: `${
-                    activeTab === "about" ? "white" : "rgba(0,0,0,0)"
+                    props.activeTab === 1 ? "white" : "rgba(0,0,0,0)"
                   }`,
                   paddingX: "12px",
-                  borderRadius: "4444px",
+                  borderRadius: "12px",
+                  cursor: "pointer",
                   "&:hover": {
                     color: "rgba(0,0,0,0.5)",
                   },
                 }}
-                onClick={() => setActiveTab("about")}
+                onClick={() => props.setActiveTab(1)}
                 variant="h6"
                 component="div"
               >
@@ -123,14 +122,15 @@ const Header: NextComponentType = (props: any) => {
               </Typography>
               <Typography
                 variant="h6"
-                onClick={() => setActiveTab("projects")}
+                onClick={() => props.setActiveTab(2)}
                 sx={{
                   background: `${
-                    activeTab === "projects" ? "white" : "rgba(0,0,0,0)"
+                    props.activeTab === 2 ? "white" : "rgba(0,0,0,0)"
                   }`,
                   //   background: "rgba(0,0,0,0.1)",
                   paddingX: "12px",
-                  borderRadius: "4444px",
+                  borderRadius: "12px",
+                  cursor: "pointer",
                   "&:hover": {
                     color: "rgba(0,0,0,0.5)",
                   },
@@ -143,15 +143,16 @@ const Header: NextComponentType = (props: any) => {
                 variant="h6"
                 sx={{
                   background: `${
-                    activeTab === "extra" ? "white" : "rgba(0,0,0,0)"
+                    props.activeTab === 3 ? "white" : "rgba(0,0,0,0)"
                   }`,
                   paddingX: "12px",
-                  borderRadius: "4444px",
+                  borderRadius: "12px",
+                  cursor: "pointer",
                   "&:hover": {
                     color: "rgba(0,0,0,0.5)",
                   },
                 }}
-                onClick={() => setActiveTab("extra")}
+                onClick={() => props.setActiveTab(3)}
                 component="div"
               >
                 Extra
@@ -198,22 +199,23 @@ const Header: NextComponentType = (props: any) => {
                   backgroundColor: "rgba(0,0,0,0.05)",
                   paddingX: "6px",
                   paddingY: "6px",
-                  borderRadius: "4444px",
+                  borderRadius: "12px",
                 }}
                 className="flex bg-gray-400"
               >
                 <Typography
                   sx={{
                     background: `${
-                      activeTab === "all" ? "white" : "rgba(0,0,0,0)"
+                      props.activeTab === 0 ? "white" : "rgba(0,0,0,0)"
                     }`,
                     paddingX: "12px",
-                    borderRadius: "4444px",
+                    borderRadius: "12px",
+                    cursor: "pointer",
                     "&:hover": {
                       color: "rgba(0,0,0,0.5)",
                     },
                   }}
-                  onClick={() => setActiveTab("all")}
+                  onClick={() => props.setActiveTab(0)}
                   variant="h6"
                   component="div"
                 >
@@ -222,15 +224,16 @@ const Header: NextComponentType = (props: any) => {
                 <Typography
                   sx={{
                     background: `${
-                      activeTab === "about" ? "white" : "rgba(0,0,0,0)"
+                      props.activeTab === 1 ? "white" : "rgba(0,0,0,0)"
                     }`,
                     paddingX: "12px",
-                    borderRadius: "4444px",
+                    borderRadius: "12px",
+                    cursor: "pointer",
                     "&:hover": {
                       color: "rgba(0,0,0,0.5)",
                     },
                   }}
-                  onClick={() => setActiveTab("about")}
+                  onClick={() => props.setActiveTab(1)}
                   variant="h6"
                   component="div"
                 >
@@ -238,14 +241,15 @@ const Header: NextComponentType = (props: any) => {
                 </Typography>
                 <Typography
                   variant="h6"
-                  onClick={() => setActiveTab("projects")}
+                  onClick={() => props.setActiveTab(2)}
                   sx={{
                     background: `${
-                      activeTab === "projects" ? "white" : "rgba(0,0,0,0)"
+                      props.activeTab === 2 ? "white" : "rgba(0,0,0,0)"
                     }`,
                     //   background: "rgba(0,0,0,0.1)",
                     paddingX: "12px",
-                    borderRadius: "4444px",
+                    borderRadius: "12px",
+                    cursor: "pointer",
                     "&:hover": {
                       color: "rgba(0,0,0,0.5)",
                     },
@@ -258,15 +262,16 @@ const Header: NextComponentType = (props: any) => {
                   variant="h6"
                   sx={{
                     background: `${
-                      activeTab === "extra" ? "white" : "rgba(0,0,0,0)"
+                      props.activeTab === 3 ? "white" : "rgba(0,0,0,0)"
                     }`,
                     paddingX: "12px",
-                    borderRadius: "4444px",
+                    borderRadius: "12px",
+                    cursor: "pointer",
                     "&:hover": {
                       color: "rgba(0,0,0,0.5)",
                     },
                   }}
-                  onClick={() => setActiveTab("extra")}
+                  onClick={() => props.setActiveTab(3)}
                   component="div"
                 >
                   Extra
@@ -277,7 +282,7 @@ const Header: NextComponentType = (props: any) => {
         </React.Fragment>
       )}
       {/* </Box> */}
-    </ElevationScroll>
+    </React.Fragment>
   );
 };
 

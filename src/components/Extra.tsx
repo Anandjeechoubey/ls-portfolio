@@ -27,9 +27,6 @@ const Extra: NextComponentType = () => {
             alt="Instagram"
           />
           <Box>
-            <Typography variant="subtitle1" component="subtitle1">
-              Offline, Last Played
-            </Typography>
             <Typography variant="body1" component="h1">
               Self Discovery
             </Typography>

@@ -11,7 +11,16 @@ const Extra: NextComponentType = () => {
     <>
       <Grid container sx={{ marginBottom: 4 }} spacing={4}>
         <Grid item xs={6} md={3}>
-          <Card sx={{ height: 240 }} bg="/images/cool-stuff.png"></Card>
+          <Card sx={{ height: 240 }} bg="/images/cool-stuff.png">
+            <Typography
+              variant="h6"
+              component="h1"
+              sx={{ opacity: 0 }}
+              gutterBottom
+            >
+              `Cras mattis consectetur purus sit amet fermentum. co
+            </Typography>
+          </Card>
         </Grid>
         <Grid item xs={6} md={3}>
           <Card
@@ -30,9 +39,6 @@ const Extra: NextComponentType = () => {
               alt="Instagram"
             />
             <Box>
-              <Typography variant="subtitle1" component="subtitle1">
-                Offline, Last Played
-              </Typography>
               <Typography variant="body1" component="h1">
                 Self Discovery
               </Typography>
