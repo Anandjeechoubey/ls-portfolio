@@ -4,12 +4,11 @@ import { Grid, Typography, Box } from "@mui/material";
 import Card from "./Card";
 import MaterialUISwitch from "./DisplayModeSwitch";
 import Image from "next/image";
-import Link from "next/link";
 
 const Extra: NextComponentType = () => {
   return (
     <>
-      <Grid container sx={{ marginBottom: 4 }} spacing={4}>
+      <Grid id="extrapage" container sx={{ marginBottom: 4 }} spacing={4}>
         <Grid item xs={6} md={3}>
           <Card sx={{ height: 240 }} bg="/images/cool-stuff.png">
             <Typography

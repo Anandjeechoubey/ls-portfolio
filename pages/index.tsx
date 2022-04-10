@@ -11,6 +11,7 @@ import Header from "../src/Header";
 import About from "../src/components/About";
 import Projects from "../src/components/Projects";
 import Extra from "../src/components/Extra_";
+import All from "../src/components/All";
 
 const Home: NextPage = () => {
   const [activeTab, setActiveTab] = React.useState(0);
@@ -39,9 +40,10 @@ const Home: NextPage = () => {
         >
           <Header activeTab={activeTab} setActiveTab={setActiveTab} />
         </Box>
-        {activeTab === 0 || activeTab === 1 ? <About /> : null}
-        {activeTab === 0 || activeTab === 2 ? <Projects /> : null}
-        {activeTab === 0 || activeTab === 3 ? <Extra /> : null}
+        {activeTab === 0 ? <All /> : null}
+        {activeTab === 1 ? <About /> : null}
+        {activeTab === 2 ? <Projects /> : null}
+        {activeTab === 3 ? <Extra /> : null}
       </Container>
     </Box>
   );

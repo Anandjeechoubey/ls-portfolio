@@ -36,7 +36,7 @@ const About: NextComponentType = () => {
   const [activeFirm, setActiveFirm] = React.useState(1);
   const firms = ["dineout", "adobe"];
   return (
-    <Grid container sx={{ marginBottom: 4 }} spacing={4}>
+    <Grid id="aboutpage" container sx={{ marginBottom: 4 }} spacing={4}>
       <Grid item xs={12} md={6}>
         <Card>
           <Image

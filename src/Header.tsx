@@ -53,7 +53,7 @@ const Header = (props: Props) => {
     <React.Fragment>
       {/* <Box className="flex justify-center w-full"> */}
       {isBrowser ? (
-        <React.Fragment>
+        <ElevationScroll>
           <AppBar
             sx={{
               display: "flex",
@@ -162,9 +162,9 @@ const Header = (props: Props) => {
               Contact
             </Typography>
           </AppBar>
-        </React.Fragment>
+        </ElevationScroll>
       ) : (
-        <React.Fragment>
+        <ElevationScroll>
           <AppBar
             sx={{
               background: "white",
@@ -279,7 +279,7 @@ const Header = (props: Props) => {
               </Box>
             </Box>
           </AppBar>
-        </React.Fragment>
+        </ElevationScroll>
       )}
       {/* </Box> */}
     </React.Fragment>

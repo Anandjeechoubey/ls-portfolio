@@ -6,10 +6,10 @@ import Image from "next/image";
 
 const Projects: NextComponentType = () => {
   return (
-    <Grid container sx={{ marginBottom: 4 }} spacing={4}>
+    <Grid id="projectpage" container sx={{ marginBottom: 4 }} spacing={4}>
       <Grid item xs={12} md={6}>
         <Box sx={{ display: "flex", gap: 4 }}>
-          <Card bg={"/images/proj1.png"}>
+          <Card sx={{ height: 360 }} bg={"/images/proj1.png"}>
             <Typography
               variant="h6"
               component="h1"
@@ -37,7 +37,7 @@ const Projects: NextComponentType = () => {
           </Card>
         </Box>
         <Box>
-          <Card bg="/images/proj4.png">
+          <Card bg={"/images/proj4.png"}>
             <Typography
               variant="h4"
               sx={{ opacity: 0 }}
@@ -55,7 +55,7 @@ const Projects: NextComponentType = () => {
       <Grid item xs={12} md={6}>
         <Grid container spacing={4}>
           <Grid item xs={6}>
-            <Card bg="/images/proj6.png">
+            <Card bg={"/images/proj6.png"}>
               <Typography
                 variant="h6"
                 component="h1"
